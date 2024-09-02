@@ -21,9 +21,14 @@ class ConstantManager {
   static const String waiting = "Waiting...";
   static const String ok = "ok";
   static const String back = "Back";
+  static const String notNow = "Not Now";
+  static const String saveLogin = "want to save your login ?";
+  static const String loginSuccess = "Login Successfully";
+  static const String createdSuccess = "Account created Successfully";
 }
 
 class EndPoint {
   static const String baseUrl = "https://ecommerce.routemisr.com";
   static const String signUpEndPoint = "/api/v1/auth/signup";
+  static const String loginEndPoint = "/api/v1/auth/signin";
 }

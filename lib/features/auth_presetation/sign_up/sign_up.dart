@@ -27,8 +27,11 @@ class SignUp extends StatelessWidget {
               Alert.hideLoading(context: context);
               Alert.showAlert(
                   context: context,
-                  content: state.response.message!,
-                  title: state.response.statusMsg!);
+                  content: ConstantManager.saveLogin,
+                  title: state.response.statusMsg ??
+                      ConstantManager.createdSuccess,
+                  firstbutton: ConstantManager.ok,
+                  secondbutton: ConstantManager.notNow);
             } else if (state is SignUpErrorState) {
               Alert.hideLoading(context: context);
               Alert.showAlert(

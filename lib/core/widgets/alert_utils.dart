@@ -71,7 +71,8 @@ class Alert {
         },
         child: Text(
           secondbutton,
-          style: TextStyle(fontSize: 12, color: AppColors.primaryColor),
+          style:
+              getMediumStyle(color: AppColors.whiteColor, size: FontSize.s16),
         ),
       ));
     }
