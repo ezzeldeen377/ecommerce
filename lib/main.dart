@@ -1,18 +1,17 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:ecommerce/core/routes_manager/route_generator.dart';
 import 'package:ecommerce/core/routes_manager/routes.dart';
 import 'package:ecommerce/domain/di/di.dart';
-import 'package:flutter/foundation.dart';
+import 'package:ecommerce/myObserver.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:device_preview/device_preview.dart';
 
 void main() {
   configureDependencies();
+  Bloc.observer = MyBlocObserver();
   runApp(
-    DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) => MyApp(), // Wrap your app
-    ),
+    DevicePreview(builder: (context) => MyApp()),
   );
 }
 

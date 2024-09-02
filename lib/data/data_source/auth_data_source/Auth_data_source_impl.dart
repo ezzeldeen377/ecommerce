@@ -1,16 +1,18 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce/core/resources/constant_manager.dart';
+import 'package:ecommerce/data/model/LoginResponeDto.dart';
 import 'package:ecommerce/data/model/SignupResponseDto.dart';
 import 'package:ecommerce/data/repository/api_manager.dart';
+import 'package:ecommerce/domain/entities/LoginResponseEntity';
 import 'package:ecommerce/domain/failures.dart';
-import 'package:ecommerce/domain/repository/auth_repository/sign_up/sign_up_Data_source.dart';
+import 'package:ecommerce/domain/repository/auth_repository/sign_up/auth_Data_source.dart';
 import 'package:injectable/injectable.dart';
 
-@Injectable(as: SignUpDataSource)
-class SignUpDataSourceImpl implements SignUpDataSource {
+@Injectable(as: AuthDataSource)
+class AuthDataSourceImpl implements AuthDataSource {
   ApiManager apiManager;
-  SignUpDataSourceImpl({required this.apiManager});
+  AuthDataSourceImpl({required this.apiManager});
   @override
   Future<Either<Failures, SignupResponseDto>> signUp(String name, String email,
       String phone, String password, String rePassword) async {
@@ -28,12 +30,39 @@ class SignUpDataSourceImpl implements SignUpDataSource {
           "phone": phone
         });
         var signUpResponse = SignupResponseDto.fromJson(response.data);
-        print(response.statusCode);
 
         if (response.statusCode! >= 200 && response.statusCode! < 300) {
           return Right(signUpResponse);
         } else {
           return Left(ServerError(errorMessage: signUpResponse.message!));
+        }
+      } else {
+        return Left(NetworkError(
+            errorMessage:
+                "no internet connection , please check your network"));
+      }
+    } catch (e) {
+      return Left(Failures(errorMessage: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failures, LoginResponseDto>> login(
+      String email, String password) async {
+    // TODO: implement login
+    try {
+      var checkConnection = await Connectivity().checkConnectivity();
+      if (checkConnection.contains(ConnectivityResult.mobile) ||
+          checkConnection.contains(ConnectivityResult.wifi)) {
+        print('$email   $password');
+        var response = await apiManager.postData(EndPoint.loginEndPoint,
+            data: {'email': email, 'password': password});
+        var loginResponse = LoginResponseDto.fromJson(response.data);
+        if (response.statusCode! >= 200 && response.statusCode! < 300) {
+          return Right(loginResponse);
+        } else {
+          print(response.statusCode);
+          return Left(ServerError(errorMessage: loginResponse.message!));
         }
       } else {
         return Left(NetworkError(
