@@ -16,6 +16,8 @@ import '../../data/data_source/auth_data_source/sign_up_data_source_impl.dart'
 import '../../data/repository/api_manager.dart' as _i320;
 import '../../data/repository/auth_repository/Sign_up_Repository_impl.dart'
     as _i856;
+import '../../features/auth_presetation/login/cubit/login_view_model.dart'
+    as _i422;
 import '../../features/auth_presetation/sign_up/cubit/sign_up_view_model.dart'
     as _i8;
 import '../repository/auth_repository/sign_up/sign_up_Data_source.dart'
@@ -35,6 +37,8 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     gh.singleton<_i320.ApiManager>(() => _i320.ApiManager());
+    gh.factory<_i422.LoginViewModel>(
+        () => _i422.LoginViewModel(useCase: gh<InvalidType>()));
     gh.factory<_i690.SignUpDataSource>(
         () => _i36.SignUpDataSourceImpl(apiManager: gh<_i320.ApiManager>()));
     gh.factory<_i303.SignUpRepository>(() =>
