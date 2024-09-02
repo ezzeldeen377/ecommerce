@@ -6,29 +6,51 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 typedef MyValidator = String? Function(String?);
 
-class TextFormFieldWidget extends StatelessWidget {
+class TextFormFieldWidget extends StatefulWidget {
   String hint;
-  ImageIcon? icon;
+  ImageIcon? suffixIcon;
   bool? obscureText;
   MyValidator? validator;
   TextEditingController controller;
-
+  bool show;
+  ImageIcon? SuffixIconShowed;
   TextFormFieldWidget(
       {required this.hint,
-      this.icon,
+      this.suffixIcon,
       this.obscureText,
       this.validator,
+      this.show = false,
+      this.SuffixIconShowed,
       required this.controller});
+
+  @override
+  State<TextFormFieldWidget> createState() => _TextFormFieldWidgetState();
+}
+
+class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       cursorHeight: 60.h,
-      controller: controller,
-      obscureText: false,
-      validator: validator,
+      controller: widget.controller,
+      obscureText: widget.obscureText ?? false,
+      validator: widget.validator,
       decoration: InputDecoration(
-        suffixIcon: icon,
-        hintText: hint,
+        suffixIcon: IconButton(
+            onPressed: () {
+              if (widget.show == true) {
+                widget.obscureText = false;
+                widget.show = false;
+              } else {
+                widget.obscureText = true;
+                widget.show = true;
+              }
+              setState(() {});
+            },
+            icon: widget.show
+                ? widget.suffixIcon ?? const SizedBox.shrink()
+                : widget.SuffixIconShowed ?? const SizedBox.shrink()),
+        hintText: widget.hint,
         hintStyle: getLightStyle(
             color: AppColors.blackColor.withOpacity(.5), size: FontSize.s14),
         filled: true,

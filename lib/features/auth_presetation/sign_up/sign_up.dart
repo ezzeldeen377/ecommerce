@@ -19,17 +19,24 @@ class SignUp extends StatelessWidget {
   Widget build(BuildContext context) {
     SignUpViewModel viewModel = getIt<SignUpViewModel>();
     return Scaffold(
-        resizeToAvoidBottomInset: true,
+        backgroundColor: AppColors.primaryColor,
         body: BlocListener(
           bloc: viewModel,
           listener: (context, state) {
             if (state is SignUpSuccessState) {
               Alert.hideLoading(context: context);
               Alert.showAlert(
-                  context: context, content: state.response.message!);
+                  context: context,
+                  content: state.response.message!,
+                  title: state.response.statusMsg!);
             } else if (state is SignUpErrorState) {
               Alert.hideLoading(context: context);
-              Alert.showAlert(context: context, content: state.errorMassage);
+              Alert.showAlert(
+                context: context,
+                content: state.errorMassage,
+                title: ConstantManager.failed,
+                firstbutton: ConstantManager.back,
+              );
             } else if (state is SignUpLoadingState) {
               Alert.showLoading(
                   context: context, message: ConstantManager.waiting);
@@ -37,129 +44,141 @@ class SignUp extends StatelessWidget {
           },
           child: SingleChildScrollView(
             child: Container(
-                height: 932.h,
                 color: AppColors.primaryColor,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    SizedBox(
-                      height: 90.h,
-                    ),
-                    Image.asset(ImageAssets.logo),
-                    SizedBox(
-                      height: AppPadding.p40.h,
-                    ),
-                    Text(
-                      ConstantManager.welcomeMessage,
-                      style: getMediumStyle(
-                          color: AppColors.whiteColor, size: FontSize.s22),
-                    ),
-                    Text(
-                      ConstantManager.askForSignIn,
-                      style: getLightStyle(
-                          color: AppColors.whiteColor, size: FontSize.s14),
-                    ),
-                    SizedBox(
-                      height: AppPadding.p20.h,
-                    ),
-                    Form(
-                        key: viewModel.formKey,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Text(
-                              ConstantManager.fullName,
-                              style: getRegularStyle(
-                                  color: AppColors.whiteColor,
-                                  size: FontSize.s16),
-                            ),
-                            SizedBox(
-                              height: AppPadding.p8.h,
-                            ),
-                            TextFormFieldWidget(
-                              hint: ConstantManager.fullNameLabel,
-                              controller: viewModel.nameController,
-                            ),
-                            SizedBox(
-                              height: AppPadding.p10.h,
-                            ),
-                            Text(
-                              ConstantManager.phoneNumber,
-                              style: getRegularStyle(
-                                  color: AppColors.whiteColor,
-                                  size: FontSize.s16),
-                            ),
-                            SizedBox(
-                              height: AppPadding.p8.h,
-                            ),
-                            TextFormFieldWidget(
-                              hint: ConstantManager.phoneNumberLabel,
-                              controller: viewModel.phoneController,
-                            ),
-                            SizedBox(
-                              height: AppPadding.p10.h,
-                            ),
-                            Text(
-                              ConstantManager.email,
-                              style: getRegularStyle(
-                                  color: AppColors.whiteColor,
-                                  size: FontSize.s16),
-                            ),
-                            SizedBox(
-                              height: AppPadding.p8.h,
-                            ),
-                            TextFormFieldWidget(
-                              hint: ConstantManager.emailLabel,
-                              controller: viewModel.emailController,
-                            ),
-                            SizedBox(
-                              height: AppPadding.p10.h,
-                            ),
-                            Text(
-                              ConstantManager.password,
-                              style: getRegularStyle(
-                                  color: AppColors.whiteColor,
-                                  size: FontSize.s16),
-                            ),
-                            SizedBox(
-                              height: AppPadding.p8.h,
-                            ),
-                            TextFormFieldWidget(
-                              hint: ConstantManager.passwordLabel,
-                              obscureText: true,
-                              controller: viewModel.passwordController,
-                            ),
-                            SizedBox(
-                              height: AppPadding.p10.h,
-                            ),
-                            Text(
-                              ConstantManager.confirmPassword,
-                              style: getRegularStyle(
-                                  color: AppColors.whiteColor,
-                                  size: FontSize.s16),
-                            ),
-                            SizedBox(
-                              height: AppPadding.p8.h,
-                            ),
-                            TextFormFieldWidget(
-                              hint: ConstantManager.confirmPasswordLabel,
-                              obscureText: true,
-                              controller: viewModel.rePasswordController,
-                              icon: const ImageIcon(
-                                  AssetImage((IconAssets.hide))),
-                            ),
-                            SizedBox(
-                              height: AppPadding.p10.h,
-                            ),
-                            ElevatedButtonWidget(
-                                text: ConstantManager.signUp,
-                                onPressed: viewModel.signUp),
-                            SizedBox(
-                              height: AppPadding.p10.h,
-                            ),
-                          ],
-                        ))
-                  ],
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: AppPadding.p20.h),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      SizedBox(
+                        height: 90.h,
+                      ),
+                      Image.asset(ImageAssets.logo),
+                      SizedBox(
+                        height: AppPadding.p40.h,
+                      ),
+                      Text(
+                        ConstantManager.welcomeMessage,
+                        style: getMediumStyle(
+                            color: AppColors.whiteColor, size: FontSize.s22),
+                      ),
+                      Text(
+                        ConstantManager.askForSignIn,
+                        style: getLightStyle(
+                            color: AppColors.whiteColor, size: FontSize.s14),
+                      ),
+                      SizedBox(
+                        height: AppPadding.p20.h,
+                      ),
+                      Form(
+                          key: viewModel.formKey,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              Text(
+                                ConstantManager.fullName,
+                                style: getRegularStyle(
+                                    color: AppColors.whiteColor,
+                                    size: FontSize.s16),
+                              ),
+                              SizedBox(
+                                height: AppPadding.p8.h,
+                              ),
+                              TextFormFieldWidget(
+                                hint: ConstantManager.fullNameLabel,
+                                controller: viewModel.nameController,
+                              ),
+                              SizedBox(
+                                height: AppPadding.p10.h,
+                              ),
+                              Text(
+                                ConstantManager.phoneNumber,
+                                style: getRegularStyle(
+                                    color: AppColors.whiteColor,
+                                    size: FontSize.s16),
+                              ),
+                              SizedBox(
+                                height: AppPadding.p8.h,
+                              ),
+                              TextFormFieldWidget(
+                                hint: ConstantManager.phoneNumberLabel,
+                                controller: viewModel.phoneController,
+                              ),
+                              SizedBox(
+                                height: AppPadding.p10.h,
+                              ),
+                              Text(
+                                ConstantManager.email,
+                                style: getRegularStyle(
+                                    color: AppColors.whiteColor,
+                                    size: FontSize.s16),
+                              ),
+                              SizedBox(
+                                height: AppPadding.p8.h,
+                              ),
+                              TextFormFieldWidget(
+                                hint: ConstantManager.emailLabel,
+                                controller: viewModel.emailController,
+                              ),
+                              SizedBox(
+                                height: AppPadding.p10.h,
+                              ),
+                              Text(
+                                ConstantManager.password,
+                                style: getRegularStyle(
+                                    color: AppColors.whiteColor,
+                                    size: FontSize.s16),
+                              ),
+                              SizedBox(
+                                height: AppPadding.p8.h,
+                              ),
+                              TextFormFieldWidget(
+                                hint: ConstantManager.passwordLabel,
+                                obscureText: true,
+                                controller: viewModel.passwordController,
+                                suffixIcon: const ImageIcon(
+                                    AssetImage(IconAssets.view)),
+                                show: true,
+                                SuffixIconShowed: const ImageIcon(
+                                    AssetImage(IconAssets.hide)),
+                              ),
+                              SizedBox(
+                                height: AppPadding.p10.h,
+                              ),
+                              Text(
+                                ConstantManager.confirmPassword,
+                                style: getRegularStyle(
+                                    color: AppColors.whiteColor,
+                                    size: FontSize.s16),
+                              ),
+                              SizedBox(
+                                height: AppPadding.p8.h,
+                              ),
+                              TextFormFieldWidget(
+                                hint: ConstantManager.confirmPasswordLabel,
+                                obscureText: true,
+                                controller: viewModel.rePasswordController,
+                                suffixIcon: const ImageIcon(
+                                  AssetImage((IconAssets.view)),
+                                ),
+                                show: true,
+                                SuffixIconShowed: const ImageIcon(
+                                  AssetImage((IconAssets.hide)),
+                                ),
+                              ),
+                              SizedBox(
+                                height: AppPadding.p10.h,
+                              ),
+                              ElevatedButtonWidget(
+                                  text: ConstantManager.signUp,
+                                  onPressed: viewModel.signUp),
+                              SizedBox(
+                                height: AppPadding.p10.h,
+                              ),
+                            ],
+                          ))
+                    ],
+                  ),
                 )),
           ),
         ));

@@ -16,10 +16,10 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: AppColors.primaryColor,
         resizeToAvoidBottomInset: true,
         body: SingleChildScrollView(
           child: Container(
-              height: 932.h,
               color: AppColors.primaryColor,
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: AppPadding.p16.h),
@@ -77,7 +77,8 @@ class Login extends StatelessWidget {
                           hint: ConstantManager.passwordLabel,
                           obscureText: true,
                           controller: passwordController,
-                          icon: const ImageIcon(AssetImage((IconAssets.hide))),
+                          suffixIcon:
+                              const ImageIcon(AssetImage((IconAssets.hide))),
                         ),
                         const SizedBox(
                           height: AppPadding.p10,

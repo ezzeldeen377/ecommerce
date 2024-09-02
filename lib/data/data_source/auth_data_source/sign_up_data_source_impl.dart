@@ -20,7 +20,7 @@ class SignUpDataSourceImpl implements SignUpDataSource {
       if (checkConnection.contains(ConnectivityResult.wifi) ||
           checkConnection.contains(ConnectivityResult.mobile)) {
         var response =
-            await apiManager.postData(ConstantManager.signUpEndPoint, data: {
+            await apiManager.postData(EndPoint.signUpEndPoint, data: {
           "name": name,
           "email": email,
           "password": password,
