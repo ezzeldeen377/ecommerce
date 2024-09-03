@@ -128,7 +128,9 @@ class Login extends StatelessWidget {
                           ElevatedButtonWidget(
                             text: ConstantManager.login,
                             onPressed: () {
-                              viewModel.login();
+                              // viewModel.login();
+                              Navigator.of(context)
+                                  .pushNamed(Routes.homeScreen);
                             },
                           ),
                           const SizedBox(
