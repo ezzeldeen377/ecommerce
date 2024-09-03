@@ -11,7 +11,7 @@ void main() {
   configureDependencies();
   Bloc.observer = MyBlocObserver();
   runApp(
-    DevicePreview(builder: (context) => MyApp()),
+    MyApp(),
   );
 }
 
