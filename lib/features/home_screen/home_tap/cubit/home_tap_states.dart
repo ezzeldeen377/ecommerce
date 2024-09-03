@@ -1,4 +1,5 @@
-import 'package:ecommerce/domain/entities/category_response_entity.dart';
+
+import 'package:ecommerce/domain/entities/CategoryResponseEntity.dart';
 
 abstract class HomeTapStates {}
 

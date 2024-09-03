@@ -3,7 +3,6 @@ import 'package:dartz/dartz.dart';
 import 'package:ecommerce/core/resources/constant_manager.dart';
 import 'package:ecommerce/data/model/home_tap_models/CategoryResponseDto.dart';
 import 'package:ecommerce/data/repository/api_manager.dart';
-import 'package:ecommerce/domain/entities/category_response_entity.dart';
 import 'package:ecommerce/domain/failures.dart';
 import 'package:ecommerce/domain/repository/home_tap/home_tap_data_source.dart';
 import 'package:injectable/injectable.dart';
@@ -13,7 +12,7 @@ class HomeTapDataSourceImpl implements HomeTapDataSource {
   ApiManager apiManager;
   HomeTapDataSourceImpl({required this.apiManager});
   @override
-  Future<Either<Failures, CategoryResponseEntity>> getAllCategory() async {
+  Future<Either<Failures, CategoryResponseDto>> getAllCategory() async {
     // TODO: implement getAllCategory
     try {
       var connectionCheck = await Connectivity().checkConnectivity();
@@ -22,7 +21,7 @@ class HomeTapDataSourceImpl implements HomeTapDataSource {
         var response = await apiManager.getData(EndPoint.categoriesEndPoint);
         var categoryResponse = CategoryResponseDto.fromJson(response.data);
         if (response.statusCode! >= 200 && response.statusCode! < 300) {
-          return Right(categoryResponse as CategoryResponseEntity);
+          return Right(categoryResponse );
         } else {
           return Left(ServerError(errorMessage: categoryResponse.message!));
         }
