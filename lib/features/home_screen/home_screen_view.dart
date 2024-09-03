@@ -1,14 +1,12 @@
 import 'package:ecommerce/core/resources/app_colors.dart';
 import 'package:ecommerce/core/resources/assets_manager.dart';
 import 'package:ecommerce/core/resources/constant_manager.dart';
-import 'package:ecommerce/core/widgets/alert_utils.dart';
 import 'package:ecommerce/features/home_screen/favourite_tap/favourite_tap_view.dart';
 import 'package:ecommerce/features/home_screen/home_tap/home_tap_view.dart';
 import 'package:ecommerce/features/home_screen/personal_tap/personal_tap_view.dart';
 import 'package:ecommerce/features/home_screen/shop_tap/shop_tap_view.dart';
 import 'package:ecommerce/features/home_screen/widgets/bottom_navigation_bar_item_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeScreenView extends StatefulWidget {
   @override

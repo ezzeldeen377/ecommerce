@@ -1,4 +1,3 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:ecommerce/core/routes_manager/route_generator.dart';
 import 'package:ecommerce/core/routes_manager/routes.dart';
 import 'package:ecommerce/domain/di/di.dart';
