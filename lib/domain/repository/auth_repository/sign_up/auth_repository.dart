@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:ecommerce/domain/entities/LoginResponseEntity';
+import 'package:ecommerce/domain/entities/LoginResponseEntity.dart';
 import 'package:ecommerce/domain/entities/SignupResonseEntity.dart';
 import 'package:ecommerce/domain/failures.dart';
 

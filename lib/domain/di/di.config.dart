@@ -41,10 +41,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i850.AuthDataSourceImpl(apiManager: gh<_i320.ApiManager>()));
     gh.factory<_i150.AuthRepository>(
         () => _i568.AuthRepositoryImpl(dataSource: gh<_i582.AuthDataSource>()));
-    gh.factory<_i190.LoginUseCase>(
-        () => _i190.LoginUseCase(repository: gh<_i150.AuthRepository>()));
     gh.factory<_i364.SignUpUseCase>(
         () => _i364.SignUpUseCase(repository: gh<_i150.AuthRepository>()));
+    gh.factory<_i190.LoginUseCase>(
+        () => _i190.LoginUseCase(repository: gh<_i150.AuthRepository>()));
     gh.factory<_i422.LoginViewModel>(
         () => _i422.LoginViewModel(useCase: gh<_i190.LoginUseCase>()));
     gh.factory<_i8.SignUpViewModel>(

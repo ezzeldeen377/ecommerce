@@ -25,10 +25,15 @@ class ConstantManager {
   static const String saveLogin = "want to save your login ?";
   static const String loginSuccess = "Login Successfully";
   static const String createdSuccess = "Account created Successfully";
+  static const String home = "home";
+  static const String shop = "shop";
+  static const String favourite = "favourite";
+  static const String personal = "personal";
 }
 
 class EndPoint {
   static const String baseUrl = "https://ecommerce.routemisr.com";
   static const String signUpEndPoint = "/api/v1/auth/signup";
   static const String loginEndPoint = "/api/v1/auth/signin";
+  static const String categoriesEndPoint = "/api/v1/categories";
 }
