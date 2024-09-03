@@ -15,7 +15,6 @@ class HomeTapViewModel extends Cubit<HomeTapStates> {
     try {
       var either = await cateogoryUseCase.invoke();
       either.fold((error) {
-        print(error.errorMessage);
         emit(CategoryErrorState(errorMessage: error.errorMessage));
       }, (response) {
         emit(CategorySuccessState(category: response));

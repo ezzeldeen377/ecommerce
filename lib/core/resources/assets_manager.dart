@@ -12,4 +12,5 @@ abstract class IconAssets {
   static const String shop = '${iconsPath}shop_icon.png';
   static const String favourite = '${iconsPath}favourite_icon.png';
   static const String personal = '${iconsPath}personal_icon.png';
+  static const String routelogo = "${iconsPath}route_logo.png";
 }

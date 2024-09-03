@@ -1,3 +1,4 @@
+import 'package:ecommerce/core/resources/assets_manager.dart';
 import 'package:ecommerce/domain/di/di.dart';
 import 'package:ecommerce/features/home_screen/home_tap/cubit/home_tap_states.dart';
 import 'package:ecommerce/features/home_screen/home_tap/cubit/home_tap_view_model.dart';
@@ -14,16 +15,10 @@ class HomeTapView extends StatelessWidget {
     return BlocBuilder<HomeTapViewModel, HomeTapStates>(
         bloc: viewModel,
         builder: (context, state) {
-          if (state is CategorySuccessState) {
-            return ListView.builder(
-              itemBuilder: (context, index) =>
-                  Text(state.category.data![index].name ?? ''),
-              itemCount: 10,
-            );
-          }
-          return Container(
-            height: 100,
-            color: Colors.black26,
+          return Column(
+            children: [
+              Image.asset(IconAssets.routelogo),
+            ],
           );
         });
   }
