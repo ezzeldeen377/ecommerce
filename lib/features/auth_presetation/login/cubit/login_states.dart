@@ -1,6 +1,4 @@
-import 'package:ecommerce/domain/entities/LoginResponseEntity';
-
-import '../../../../domain/entities/LoginResponseEntity.dart';
+import 'package:ecommerce/domain/entities/LoginResponseEntity.dart';
 
 abstract class LoginStates {}
 

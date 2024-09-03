@@ -10,6 +10,7 @@ class HomeTapView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    viewModel.getCategory();
     return BlocBuilder<HomeTapViewModel, HomeTapStates>(
         bloc: viewModel,
         builder: (context, state) {

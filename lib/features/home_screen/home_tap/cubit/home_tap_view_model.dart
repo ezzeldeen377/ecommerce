@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:ecommerce/domain/usecase/home_tap/cateogory_use_case.dart';
 import 'package:ecommerce/features/home_screen/home_tap/cubit/home_tap_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,6 +15,7 @@ class HomeTapViewModel extends Cubit<HomeTapStates> {
     try {
       var either = await cateogoryUseCase.invoke();
       either.fold((error) {
+        print(error.errorMessage);
         emit(CategoryErrorState(errorMessage: error.errorMessage));
       }, (response) {
         emit(CategorySuccessState(category: response));
