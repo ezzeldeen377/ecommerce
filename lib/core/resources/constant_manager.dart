@@ -21,6 +21,9 @@ class ConstantManager {
   static const String waiting = "Waiting...";
   static const String ok = "ok";
   static const String back = "Back";
+  static const String category = "Categories";
+  static const String brand = "Brands";
+  static const String viewAll = "view all";
   static const String notNow = "Not Now";
   static const String saveLogin = "want to save your login ?";
   static const String loginSuccess = "Login Successfully";
@@ -29,6 +32,7 @@ class ConstantManager {
   static const String shop = "shop";
   static const String favourite = "favourite";
   static const String personal = "personal";
+  static const String searchFor = "what do you search for ?";
 }
 
 class EndPoint {
@@ -36,4 +40,5 @@ class EndPoint {
   static const String signUpEndPoint = "/api/v1/auth/signup";
   static const String loginEndPoint = "/api/v1/auth/signin";
   static const String categoriesEndPoint = "/api/v1/categories";
+  static const String brandsEndPoint = "/api/v1/brands";
 }

@@ -21,18 +21,19 @@ class AuthDataSourceImpl implements AuthDataSource {
       if (checkConnection.contains(ConnectivityResult.wifi) ||
           checkConnection.contains(ConnectivityResult.mobile)) {
         var response =
-            await apiManager.postData(EndPoint.signUpEndPoint, data: {
-          "name": name,
-          "email": email,
-          "password": password,
-          "rePassword": rePassword,
-          "phone": phone
-        });
+            await apiManager.postData(EndPoint.signUpEndPoint, data:{
+              "name": name,
+              "email":email,
+              "password":password,
+              "rePassword":rePassword,
+              "phone":phone
+            });
         var signUpResponse = SignupResponseDto.fromJson(response.data);
-
+        print("@@@@@@@@@@@@@@@@@@@@@@${signUpResponse.user?.name}");
         if (response.statusCode! >= 200 && response.statusCode! < 300) {
           return Right(signUpResponse);
         } else {
+          print(response.statusCode);
           return Left(ServerError(errorMessage: signUpResponse.message!));
         }
       } else {

@@ -29,7 +29,14 @@ class Login extends StatelessWidget {
               content: ConstantManager.saveLogin,
               title: state.response.statusMsg ?? ConstantManager.loginSuccess,
               firstbutton: ConstantManager.ok,
-              secondbutton: ConstantManager.notNow);
+              firstAction: (){
+                Navigator.of(context).pushReplacementNamed(Routes.homeScreen);
+              },
+              secondbutton: ConstantManager.notNow,
+            SecondAction:  (){
+              Navigator.of(context).pushReplacementNamed(Routes.homeScreen);
+            },
+          );
         } else if (state is LoginErrorState) {
           Alert.hideLoading(context: context);
           Alert.showAlert(
@@ -127,11 +134,9 @@ class Login extends StatelessWidget {
                           ),
                           ElevatedButtonWidget(
                             text: ConstantManager.login,
-                            onPressed: () {
-                              // viewModel.login();
-                              Navigator.of(context)
-                                  .pushNamed(Routes.homeScreen);
-                            },
+                            onPressed:
+                              viewModel.login
+
                           ),
                           const SizedBox(
                             height: AppPadding.p10,

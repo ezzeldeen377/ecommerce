@@ -8,11 +8,11 @@ import 'package:injectable/injectable.dart';
 class SignUpViewModel extends Cubit<SignUpStates> {
   SignUpViewModel({required this.useCase}) : super(SignUpInitialState());
   SignUpUseCase useCase;
-  var nameController = TextEditingController();
-  var emailController = TextEditingController();
-  var phoneController = TextEditingController();
-  var passwordController = TextEditingController();
-  var rePasswordController = TextEditingController();
+  var nameController = TextEditingController(text: "weqwqeq");
+  var emailController = TextEditingController(text: "ezzeldeen1@gmail.com");
+  var phoneController = TextEditingController(text: '011210026265');
+  var passwordController = TextEditingController(text: '123456');
+  var rePasswordController = TextEditingController(text: '123456');
   var formKey = GlobalKey<FormState>();
 
   void signUp() async {
@@ -24,6 +24,7 @@ class SignUpViewModel extends Cubit<SignUpStates> {
         passwordController.text,
         rePasswordController.text);
     either.fold((error) {
+
       emit(SignUpErrorState(errorMassage: error.errorMessage));
     }, (success) {
       emit(SignUpSuccessState(response: success));

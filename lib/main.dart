@@ -1,6 +1,8 @@
 import 'package:ecommerce/core/routes_manager/route_generator.dart';
 import 'package:ecommerce/core/routes_manager/routes.dart';
 import 'package:ecommerce/domain/di/di.dart';
+import 'package:ecommerce/features/home_screen/cubit/home_screen_view_model.dart';
+import 'package:ecommerce/features/home_screen/home_tap/cubit/home_tap_view_model.dart';
 import 'package:ecommerce/myObserver.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,7 +12,11 @@ void main() {
   configureDependencies();
   Bloc.observer = MyBlocObserver();
   runApp(
-    MyApp(),
+    MultiBlocProvider(providers:[
+      BlocProvider<HomeTapViewModel>(create: (_)=>getIt<HomeTapViewModel>()),
+      BlocProvider<HomeScreenViewModel>(create: (_)=>getIt<HomeScreenViewModel>()),
+    ],
+    child:MyApp()),
   );
 }
 
@@ -25,7 +31,7 @@ class MyApp extends StatelessWidget {
         builder: (_, child) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            initialRoute: Routes.login,
+            initialRoute: Routes.homeScreen,
             onGenerateRoute: RouteGenerator.onGenerate,
           );
         });

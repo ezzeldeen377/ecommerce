@@ -3,6 +3,9 @@ const String iconsPath = "assets/icons/";
 
 abstract class ImageAssets {
   static const String logo = "${imagePath}logo.png";
+  static const String ad1 = "${imagePath}ad1.png";
+  static const String ad2 = "${imagePath}ad2.png";
+  static const String ad3 = "${imagePath}ad3.png";
 }
 
 abstract class IconAssets {
@@ -13,4 +16,6 @@ abstract class IconAssets {
   static const String favourite = '${iconsPath}favourite_icon.png';
   static const String personal = '${iconsPath}personal_icon.png';
   static const String routelogo = "${iconsPath}route_logo.png";
+  static const String search = "${iconsPath}search_icon.png";
+  static const String cart = "${iconsPath}cart_icon.png";
 }

@@ -4,6 +4,7 @@ import 'package:ecommerce/core/resources/constant_manager.dart';
 import 'package:ecommerce/core/resources/font_manager.dart';
 import 'package:ecommerce/core/resources/text_style_manager.dart';
 import 'package:ecommerce/core/resources/values_manager.dart';
+import 'package:ecommerce/core/routes_manager/routes.dart';
 import 'package:ecommerce/core/widgets/alert_utils.dart';
 import 'package:ecommerce/core/widgets/elevated_button_widget.dart';
 import 'package:ecommerce/core/widgets/text_form_field_widget.dart';
@@ -31,6 +32,13 @@ class SignUp extends StatelessWidget {
                   title: state.response.statusMsg ??
                       ConstantManager.createdSuccess,
                   firstbutton: ConstantManager.ok,
+
+                  firstAction:  (){
+                    Navigator.of(context).pushReplacementNamed(Routes.homeScreen);
+                  },
+                  SecondAction:  (){
+                    Navigator.of(context).pushReplacementNamed(Routes.homeScreen);
+                  },
                   secondbutton: ConstantManager.notNow);
             } else if (state is SignUpErrorState) {
               Alert.hideLoading(context: context);
@@ -174,7 +182,7 @@ class SignUp extends StatelessWidget {
                               ),
                               ElevatedButtonWidget(
                                   text: ConstantManager.signUp,
-                                  onPressed: viewModel.signUp),
+                                  onPressed: (){viewModel.signUp();}),
                               SizedBox(
                                 height: AppPadding.p10.h,
                               ),
