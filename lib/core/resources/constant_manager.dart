@@ -42,6 +42,7 @@ class ConstantManager {
   static const String color = "Color";
   static const String totalItemPrice = "Total Item price";
   static const String checkOut = "Checkout";
+  static const String chooseAmount = "Choose amount";
 
 }
 

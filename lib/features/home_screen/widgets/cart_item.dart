@@ -67,7 +67,7 @@ class CartItem extends StatelessWidget {
                     CustomizableCounter(
                       borderRadius: 50,
                       borderWidth: 0,
-                      buttonText: ConstantManager.addToCart,
+                      buttonText: ConstantManager.chooseAmount,
                       backgroundColor: AppColors.primaryColor,
                       textColor: Colors.white,
                       textSize: FontSize.s16.sp,

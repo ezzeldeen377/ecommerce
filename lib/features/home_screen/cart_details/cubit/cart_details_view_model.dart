@@ -18,7 +18,13 @@ class CartDetailsViewModel extends Cubit<CartStates> {
  DeleteItemFromCartUseCase deleteItemFromCartUseCase;
  UpdateQuantityUseCase updateQuantityUseCase;
 
-
+ bool? checkItemInCart(String productId){
+  var check= productList?.any((element){
+   return element.product?.id==productId;
+  });
+  print(check);
+  return check;
+ }
 
  static CartDetailsViewModel get(BuildContext context) =>
      BlocProvider.of<CartDetailsViewModel>(context);

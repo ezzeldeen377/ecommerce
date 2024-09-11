@@ -22,8 +22,10 @@ class ProductDetailsView extends StatelessWidget {
   ProductDetailsView({required this.product});
   @override
   Widget build(BuildContext context) {
-    ShopTabViewModel.get(context).changeCount(CartDetailsViewModel.get(context).getCount(product.id??''));
-    ShopTabViewModel.get(context).updateTotalPrice((product.price!*ShopTabViewModel.get(context).count).toInt());
+    ShopTabViewModel.get(context).changeCount(
+        CartDetailsViewModel.get(context).getCount(product.id ?? ''));
+    ShopTabViewModel.get(context).updateTotalPrice(
+        (product.price! * ShopTabViewModel.get(context).count).toInt());
     return BlocBuilder<ShopTabViewModel, ShopTapStates>(
         bloc: ShopTabViewModel.get(context),
         builder: (context, state) {
@@ -166,10 +168,10 @@ class ProductDetailsView extends StatelessWidget {
                         CustomizableCounter(
                           borderRadius: 50,
                           borderWidth: 0,
-                          buttonText: ConstantManager.addToCart,
+                          buttonText: ConstantManager.chooseAmount,
                           backgroundColor: AppColors.primaryColor,
                           textColor: Colors.white,
-                          textSize: 18,
+                          textSize: FontSize.s16.sp,
                           count: ShopTabViewModel.get(context).count,
                           step: 1,
                           minCount: 0,
@@ -184,12 +186,14 @@ class ProductDetailsView extends StatelessWidget {
                           ),
                           onCountChange: (count) {},
                           onIncrement: (count) {
-                            ShopTabViewModel.get(context)
-                                .updateTotalPrice(product.price!.toInt()*count.toInt());
+                            ShopTabViewModel.get(context).changeCount(count);
+                            ShopTabViewModel.get(context).updateTotalPrice(
+                                product.price!.toInt() * count.toInt());
                           },
                           onDecrement: (count) {
-                            ShopTabViewModel.get(context)
-                                .updateTotalPrice(product.price!.toInt()*count.toInt());
+                            ShopTabViewModel.get(context).changeCount(count);
+                            ShopTabViewModel.get(context).updateTotalPrice(
+                                product.price!.toInt() * count.toInt());
                           },
                         ),
                       ],
@@ -223,24 +227,23 @@ class ProductDetailsView extends StatelessWidget {
                           getMediumStyle(color: AppColors.blackColor, size: 18),
                     ),
                     Row(
-                      children: ShopTabViewModel.get(context)
-                          .sizeList
-                          .map((value) {
+                      children:
+                          ShopTabViewModel.get(context).sizeList.map((value) {
                         return GestureDetector(
                           onTap: () {
                             ShopTabViewModel.get(context).changeSize(value);
                           },
                           child: CircleAvatar(
-                            backgroundColor: ShopTabViewModel.get(context)
-                                        .selectedSize ==
-                                    value
-                                ? AppColors.primaryColor
-                                : AppColors.whiteColor,
-                            foregroundColor: ShopTabViewModel.get(context)
-                                        .selectedSize ==
-                                    value
-                                ? AppColors.whiteColor
-                                : AppColors.primaryColor,
+                            backgroundColor:
+                                ShopTabViewModel.get(context).selectedSize ==
+                                        value
+                                    ? AppColors.primaryColor
+                                    : AppColors.whiteColor,
+                            foregroundColor:
+                                ShopTabViewModel.get(context).selectedSize ==
+                                        value
+                                    ? AppColors.whiteColor
+                                    : AppColors.primaryColor,
                             child: Text(value),
                           ),
                         );
@@ -266,14 +269,14 @@ class ProductDetailsView extends StatelessWidget {
                                 horizontal: AppPadding.p5.w),
                             child: CircleAvatar(
                               backgroundColor: entery.value,
-                              child: ShopTabViewModel.get(context)
-                                          .selectedColor ==
-                                      entery.key
-                                  ? Icon(
-                                      Icons.check,
-                                      color: AppColors.whiteColor,
-                                    )
-                                  : null,
+                              child:
+                                  ShopTabViewModel.get(context).selectedColor ==
+                                          entery.key
+                                      ? Icon(
+                                          Icons.check,
+                                          color: AppColors.whiteColor,
+                                        )
+                                      : null,
                             ),
                           ));
                     }).toList()),
@@ -307,7 +310,24 @@ class ProductDetailsView extends StatelessWidget {
                           backgroundColor: AppColors.primaryColor,
                           foregroundColor: AppColors.whiteColor),
                       label: Text(ConstantManager.addToCart),
-                      onPressed: () {},
+                      onPressed: () async {
+                        if (CartDetailsViewModel.get(context)
+                            .checkItemInCart(product.id!)!) {
+                          if (ShopTabViewModel.get(context).count != 0) {
+                            CartDetailsViewModel.get(context)
+                                .updateItemQuantity(product.id!,
+                                    ShopTabViewModel.get(context).count);
+                          }
+                        } else {
+                          if (ShopTabViewModel.get(context).count != 0) {
+                            await ShopTabViewModel.get(context)
+                                .addToCart(product.id!);
+                            CartDetailsViewModel.get(context)
+                                .updateItemQuantity(product.id!,
+                                    ShopTabViewModel.get(context).count);
+                          }
+                        }
+                      },
                       icon: ImageIcon(AssetImage(IconAssets.addToCart)))
                 ],
               ),
