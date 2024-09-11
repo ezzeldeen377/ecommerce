@@ -1,3 +1,6 @@
+import 'package:ecommerce/core/resources/constant_manager.dart';
+import 'package:ecommerce/core/routes_manager/routes.dart';
+import 'package:ecommerce/core/widgets/shared_preferences_utils.dart';
 import 'package:flutter/material.dart';
 
 class PersonalTapView extends StatelessWidget {
@@ -5,6 +8,11 @@ class PersonalTapView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Container(
+      child: Center(child: ElevatedButton(onPressed: (){
+        SharedPreferencesUtils.remove(ConstantManager.token);
+        Navigator.of(context).pushReplacementNamed(Routes.login);
+      }, child: Text('Log out'))),
+    );
   }
 }

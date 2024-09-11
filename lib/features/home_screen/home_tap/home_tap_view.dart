@@ -10,26 +10,32 @@ import 'package:ecommerce/core/resources/values_manager.dart';
 import 'package:ecommerce/core/widgets/alert_utils.dart';
 import 'package:ecommerce/core/widgets/search_widget.dart';
 import 'package:ecommerce/domain/di/di.dart';
+import 'package:ecommerce/features/home_screen/cart_details/cubit/cart_details_view_model.dart';
 import 'package:ecommerce/features/home_screen/home_tap/cubit/home_tap_states.dart';
 import 'package:ecommerce/features/home_screen/home_tap/cubit/home_tap_view_model.dart';
+import 'package:ecommerce/features/home_screen/shop_tap/cubit/shop_tap_view_model.dart';
 import 'package:ecommerce/features/home_screen/widgets/category_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // ignore: must_be_immutable
 class HomeTapView extends StatelessWidget {
 
+
   @override
   Widget build(BuildContext context) {
-
+    FlutterNativeSplash.remove();
     return BlocBuilder<HomeTapViewModel, HomeTapStates>(
         bloc: HomeTapViewModel.getInit(context)..getCategory()..getBrand(),
         builder: (context, state) {
           return SafeArea(
             child:Scaffold(
+              backgroundColor: AppColors.whiteColor,
               appBar:AppBar(
+                backgroundColor: AppColors.whiteColor,
                 title: Image.asset(IconAssets.routelogo),
                 automaticallyImplyLeading: false,
                 bottom: PreferredSize(preferredSize: Size(50,30), child:Padding(

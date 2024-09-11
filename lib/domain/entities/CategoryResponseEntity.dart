@@ -17,6 +17,8 @@ class CategoryResponseEntity {
   String? statusMsg;
   List<DataEntity>? data;
 
+  toJson() {}
+
 
 }
 

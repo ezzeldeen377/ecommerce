@@ -1,9 +1,10 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce/core/resources/constant_manager.dart';
+import 'package:ecommerce/core/widgets/shared_preferences_utils.dart';
 import 'package:ecommerce/data/model/auth_models/LoginResponeDto.dart';
 import 'package:ecommerce/data/model/auth_models/SignupResponseDto.dart';
-import 'package:ecommerce/data/repository/api_manager.dart';
+import 'package:ecommerce/data/api_manager.dart';
 import 'package:ecommerce/domain/failures.dart';
 import 'package:ecommerce/domain/repository/auth_repository/sign_up/auth_Data_source.dart';
 import 'package:injectable/injectable.dart';
@@ -29,8 +30,8 @@ class AuthDataSourceImpl implements AuthDataSource {
               "phone":phone
             });
         var signUpResponse = SignupResponseDto.fromJson(response.data);
-        print("@@@@@@@@@@@@@@@@@@@@@@${signUpResponse.user?.name}");
         if (response.statusCode! >= 200 && response.statusCode! < 300) {
+          SharedPreferencesUtils.set(ConstantManager.token, signUpResponse.token);
           return Right(signUpResponse);
         } else {
           print(response.statusCode);
@@ -58,6 +59,7 @@ class AuthDataSourceImpl implements AuthDataSource {
             data: {'email': email, 'password': password});
         var loginResponse = LoginResponseDto.fromJson(response.data);
         if (response.statusCode! >= 200 && response.statusCode! < 300) {
+          SharedPreferencesUtils.set(ConstantManager.token, loginResponse.token);
           return Right(loginResponse);
         } else {
           return Left(ServerError(errorMessage: loginResponse.message!));

@@ -2,6 +2,7 @@ import 'package:ecommerce/core/routes_manager/routes.dart';
 import 'package:ecommerce/features/auth_presetation/login/login_view.dart';
 import 'package:ecommerce/features/auth_presetation/sign_up/sign_up.dart';
 import 'package:ecommerce/features/home_screen/home_screen_view.dart';
+import 'package:ecommerce/features/home_screen/shop_tap/product_details_view.dart';
 import 'package:flutter/material.dart';
 
 class RouteGenerator {

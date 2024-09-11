@@ -33,6 +33,16 @@ class ConstantManager {
   static const String favourite = "favourite";
   static const String personal = "personal";
   static const String searchFor = "what do you search for ?";
+  static const String token = "token";
+  static const String productDetails = "Product Details";
+  static const String cart = "Cart";
+  static const String addToCart = "Add to cart";
+  static const String description = "Description";
+  static const String size = "Size";
+  static const String color = "Color";
+  static const String totalItemPrice = "Total Item price";
+  static const String checkOut = "Checkout";
+
 }
 
 class EndPoint {
@@ -41,4 +51,6 @@ class EndPoint {
   static const String loginEndPoint = "/api/v1/auth/signin";
   static const String categoriesEndPoint = "/api/v1/categories";
   static const String brandsEndPoint = "/api/v1/brands";
+  static const String productsEndPoint = "/api/v1/products";
+  static const String addToCart = "/api/v1/cart";
 }

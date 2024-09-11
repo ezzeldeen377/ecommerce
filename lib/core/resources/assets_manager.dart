@@ -18,4 +18,6 @@ abstract class IconAssets {
   static const String routelogo = "${iconsPath}route_logo.png";
   static const String search = "${iconsPath}search_icon.png";
   static const String cart = "${iconsPath}cart_icon.png";
+  static const String addToCart = "${iconsPath}add_to_cart_icon.png";
+  static const String delete = "${iconsPath}delete_icon.png";
 }

@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:ecommerce/core/resources/constant_manager.dart';
 import 'package:ecommerce/data/model/home_tap_models/BrandResponseDto.dart';
 import 'package:ecommerce/data/model/home_tap_models/CategoryResponseDto.dart';
-import 'package:ecommerce/data/repository/api_manager.dart';
+import 'package:ecommerce/data/api_manager.dart';
 import 'package:ecommerce/domain/entities/BrandResponseEntity.dart';
 import 'package:ecommerce/domain/failures.dart';
 import 'package:ecommerce/domain/repository/home_tap/home_tap_data_source.dart';

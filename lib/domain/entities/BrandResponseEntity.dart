@@ -19,6 +19,8 @@ class BrandResponseEntity {
   String? statusMsg;
   List<DataEntity>? data;
 
+  toJson() {}
+
 
 }
 

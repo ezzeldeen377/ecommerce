@@ -22,7 +22,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeScreenViewModel,HomeScreenStates>(
-      bloc:  HomeScreenViewModel.getInit(context),
+      bloc:  HomeScreenViewModel.getInit(context)..init(context),
       builder: (context,state) {
         return Scaffold(
           extendBody: true,
