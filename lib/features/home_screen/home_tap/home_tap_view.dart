@@ -27,7 +27,6 @@ class HomeTapView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FlutterNativeSplash.remove();
     return BlocBuilder<HomeTapViewModel, HomeTapStates>(
         bloc: HomeTapViewModel.getInit(context)..getCategory()..getBrand(),
         builder: (context, state) {

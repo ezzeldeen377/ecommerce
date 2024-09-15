@@ -54,4 +54,5 @@ class EndPoint {
   static const String brandsEndPoint = "/api/v1/brands";
   static const String productsEndPoint = "/api/v1/products";
   static const String addToCart = "/api/v1/cart";
+  static const String addToWatchList = "/api/v1/wishlist";
 }

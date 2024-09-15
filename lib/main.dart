@@ -5,6 +5,7 @@ import 'package:ecommerce/core/widgets/shared_preferences_utils.dart';
 import 'package:ecommerce/domain/di/di.dart';
 import 'package:ecommerce/features/home_screen/cart_details/cubit/cart_details_view_model.dart';
 import 'package:ecommerce/features/home_screen/cubit/home_screen_view_model.dart';
+import 'package:ecommerce/features/home_screen/favourite_tap/cubit/favourite_tab_view_model.dart';
 import 'package:ecommerce/features/home_screen/home_tap/cubit/home_tap_view_model.dart';
 import 'package:ecommerce/features/home_screen/shop_tap/cubit/shop_tap_view_model.dart';
 import 'package:ecommerce/myObserver.dart';
@@ -14,8 +15,8 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Future<void> main() async {
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+WidgetsFlutterBinding.ensureInitialized();
+
   await SharedPreferencesUtils.init();
   var object= SharedPreferencesUtils.get(ConstantManager.token);
   String route;
@@ -32,6 +33,7 @@ Future<void> main() async {
       BlocProvider<ShopTabViewModel>(create: (_)=>getIt<ShopTabViewModel>()),
       BlocProvider<HomeScreenViewModel>(create: (_)=>getIt<HomeScreenViewModel>()),
       BlocProvider<CartDetailsViewModel>(create: (_)=>getIt<CartDetailsViewModel>()),
+      BlocProvider<FavouriteTabViewModel>(create: (_)=>getIt<FavouriteTabViewModel>()),
     ],
     child:MyApp(route: route,)),
   );
