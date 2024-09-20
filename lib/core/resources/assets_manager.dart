@@ -6,6 +6,9 @@ abstract class ImageAssets {
   static const String ad1 = "${imagePath}ad1.png";
   static const String ad2 = "${imagePath}ad2.png";
   static const String ad3 = "${imagePath}ad3.png";
+  static const String favouriteFilled =
+      '${imagePath}favourite_image_filled.png';
+  static const String favourite = '${imagePath}favourite_image.png';
 }
 
 abstract class IconAssets {

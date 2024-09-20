@@ -7,15 +7,14 @@ import 'package:ecommerce/domain/entities/CategoryResponseEntity.dart';
 
 class ProductResponseEntity {
   ProductResponseEntity({
-      this.results, 
-      this.metadata, 
-      this.data,});
+    this.results,
+    this.metadata,
+    this.data,
+  });
 
   num? results;
   MetadataEntity? metadata;
   List<ProductEntity>? data;
-
-
 }
 
 /// sold : 7318
@@ -38,21 +37,21 @@ class ProductResponseEntity {
 
 class ProductEntity {
   ProductEntity({
-      this.sold, 
-      this.images, 
-      this.subcategory, 
-      this.ratingsQuantity, 
-      this.id, 
-      this.title, 
-      this.slug, 
-      this.description, 
-      this.quantity, 
-      this.price, 
-      this.imageCover, 
-      this.category, 
-      this.brand, 
-      this.ratingsAverage,
-      });
+    this.sold,
+    this.images,
+    this.subcategory,
+    this.ratingsQuantity,
+    this.id,
+    this.title,
+    this.slug,
+    this.description,
+    this.quantity,
+    this.price,
+    this.imageCover,
+    this.category,
+    this.brand,
+    this.ratingsAverage,
+  });
 
   num? sold;
   List<String>? images;
@@ -70,12 +69,7 @@ class ProductEntity {
   num? ratingsAverage;
 
   toJson() {}
-
-
-
-
 }
-
 
 /// _id : "6407f1bcb575d3b90bf95797"
 /// name : "Women's Clothing"
@@ -84,10 +78,11 @@ class ProductEntity {
 
 class SubcategoryEntity {
   SubcategoryEntity({
-      this.id, 
-      this.name, 
-      this.slug, 
-      this.category,});
+    this.id,
+    this.name,
+    this.slug,
+    this.category,
+  });
 
   String? id;
   String? name;
@@ -95,8 +90,6 @@ class SubcategoryEntity {
   String? category;
 
   toJson() {}
-
-
 }
 
 /// currentPage : 1
@@ -106,10 +99,11 @@ class SubcategoryEntity {
 
 class MetadataEntity {
   MetadataEntity({
-      this.currentPage, 
-      this.numberOfPages, 
-      this.limit, 
-      this.nextPage,});
+    this.currentPage,
+    this.numberOfPages,
+    this.limit,
+    this.nextPage,
+  });
 
   num? currentPage;
   num? numberOfPages;
@@ -117,6 +111,4 @@ class MetadataEntity {
   num? nextPage;
 
   toJson() {}
-
-
 }

@@ -8,10 +8,11 @@ import 'package:ecommerce/domain/entities/CartDetailsResponseEntity.dart';
 
 class CartDetailsResponseDto extends CartDetailsResponseEntity {
   CartDetailsResponseDto({
-      super.status,
-      super.numOfCartItems,
-      super.cartId,
-      super.data,});
+    super.status,
+    super.numOfCartItems,
+    super.cartId,
+    super.data,
+  });
 
   CartDetailsResponseDto.fromJson(dynamic json) {
     status = json['status'];
@@ -32,7 +33,6 @@ class CartDetailsResponseDto extends CartDetailsResponseEntity {
     }
     return map;
   }
-
 }
 
 /// _id : "66dc86801a43872c9195bbe9"
@@ -45,13 +45,14 @@ class CartDetailsResponseDto extends CartDetailsResponseEntity {
 
 class CartDataDto extends CartDataEntity {
   CartDataDto({
-      super.id,
+    super.id,
     super.cartOwner,
     super.products,
     super.createdAt,
     super.updatedAt,
     super.v,
-    super.totalCartPrice,});
+    super.totalCartPrice,
+  });
 
   CartDataDto.fromJson(dynamic json) {
     id = json['_id'];
@@ -68,7 +69,6 @@ class CartDataDto extends CartDataEntity {
     totalCartPrice = json['totalCartPrice'];
   }
 
-
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['_id'] = id;
@@ -82,7 +82,6 @@ class CartDataDto extends CartDataEntity {
     map['totalCartPrice'] = totalCartPrice;
     return map;
   }
-
 }
 
 /// count : 2
@@ -95,15 +94,16 @@ class CartProductsDto extends CartProductsEntity {
     super.count,
     super.id,
     super.product,
-    super.price,});
+    super.price,
+  });
 
   CartProductsDto.fromJson(dynamic json) {
     count = json['count'];
     id = json['_id'];
-    product = json['product'] != null ? ProductDto.fromJson(json['product']) : null;
+    product =
+        json['product'] != null ? ProductDto.fromJson(json['product']) : null;
     price = json['price'];
   }
-
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -115,7 +115,6 @@ class CartProductsDto extends CartProductsEntity {
     map['price'] = price;
     return map;
   }
-
 }
 
 /// subcategory : [{"_id":"6407f1bcb575d3b90bf95797","name":"Women's Clothing","slug":"women's-clothing","category":"6439d58a0049ad0b52b9003f"}]
@@ -127,6 +126,3 @@ class CartProductsDto extends CartProductsEntity {
 /// brand : {"_id":"64089bbe24b25627a253158b","name":"DeFacto","slug":"defacto","image":"https://ecommerce.routemisr.com/Route-Academy-brands/1678285758109.png"}
 /// ratingsAverage : 4.8
 /// id : "6428eb43dc1175abc65ca0b3"
-
-
-

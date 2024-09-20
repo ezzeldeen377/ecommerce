@@ -5,12 +5,12 @@ import 'package:ecommerce/domain/repository/home_tap/home_tap_repository.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class BrandUseCase{
+class BrandUseCase {
   HomeTapRepository repository;
   BrandUseCase({required this.repository});
 
-  Future<Either<Failures,BrandResponseEntity>> invoke() async{
-    var either =await repository.getAllBrands();
-    return either.fold((error)=>Left(error),(response)=>Right(response));
+  Future<Either<Failures, BrandResponseEntity>> invoke() async {
+    var either = await repository.getAllBrands();
+    return either.fold((error) => Left(error), (response) => Right(response));
   }
 }

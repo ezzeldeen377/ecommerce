@@ -1,6 +1,9 @@
+import 'dart:ui';
+
 import 'package:ecommerce/core/resources/app_colors.dart';
 import 'package:ecommerce/core/resources/font_manager.dart';
 import 'package:ecommerce/core/resources/text_style_manager.dart';
+import 'package:ecommerce/core/resources/values_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -31,11 +34,11 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      cursorHeight: 60.h,
       controller: widget.controller,
       obscureText: widget.obscureText ?? false,
       validator: widget.validator,
       decoration: InputDecoration(
+        contentPadding: EdgeInsets.symmetric(horizontal: AppPadding.p10.w),
         suffixIcon: IconButton(
             onPressed: () {
               if (widget.show == true) {
@@ -52,7 +55,7 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
                 : widget.SuffixIconShowed ?? const SizedBox.shrink()),
         hintText: widget.hint,
         hintStyle: getLightStyle(
-            color: AppColors.blackColor.withOpacity(.5), size: FontSize.s14),
+            color: AppColors.blackColor.withOpacity(.5), size: FontSize.s14.sp),
         filled: true,
         fillColor: AppColors.whiteColor,
         focusedBorder: OutlineInputBorder(

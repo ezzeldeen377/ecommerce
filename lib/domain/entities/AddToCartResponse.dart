@@ -6,19 +6,18 @@
 
 class AddToCartResponseEntity {
   AddToCartResponseEntity({
-      this.status, 
-      this.message, 
-      this.numOfCartItems, 
-      this.cartId, 
-      this.data,});
+    this.status,
+    this.message,
+    this.numOfCartItems,
+    this.cartId,
+    this.data,
+  });
 
   String? status;
   String? message;
   num? numOfCartItems;
   String? cartId;
   CartDataEntity? data;
-
-
 }
 
 /// _id : "66dc86801a43872c9195bbe9"
@@ -31,13 +30,14 @@ class AddToCartResponseEntity {
 
 class CartDataEntity {
   CartDataEntity({
-      this.id, 
-      this.cartOwner, 
-      this.products, 
-      this.createdAt, 
-      this.updatedAt, 
-      this.v, 
-      this.totalCartPrice,});
+    this.id,
+    this.cartOwner,
+    this.products,
+    this.createdAt,
+    this.updatedAt,
+    this.v,
+    this.totalCartPrice,
+  });
 
   String? id;
   String? cartOwner;
@@ -48,8 +48,6 @@ class CartDataEntity {
   num? totalCartPrice;
 
   toJson() {}
-
-
 }
 
 /// count : 1
@@ -59,10 +57,11 @@ class CartDataEntity {
 
 class ProductsInCartEntity {
   ProductsInCartEntity({
-      this.count, 
-      this.id, 
-      this.product, 
-      this.price,});
+    this.count,
+    this.id,
+    this.product,
+    this.price,
+  });
 
   num? count;
   String? id;
@@ -70,6 +69,4 @@ class ProductsInCartEntity {
   num? price;
 
   toJson() {}
-
-
 }

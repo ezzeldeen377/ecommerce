@@ -6,14 +6,12 @@ import 'package:ecommerce/domain/entities/ProductResponseEntity.dart';
 
 class AddToWatchListResponseEntity {
   AddToWatchListResponseEntity({
-      this.status, 
-      this.count, 
-      this.data,});
+    this.status,
+    this.count,
+    this.data,
+  });
 
   String? status;
   num? count;
   List<ProductEntity>? data;
-
-
 }
-

@@ -19,7 +19,7 @@ class HomeTapRepositoryImpl implements HomeTapRepository {
   @override
   Future<Either<Failures, BrandResponseEntity>> getAllBrands() async {
     // TODO: implement getAllBrands
-    var either =await dataSource.getAllBrands();
-    return either.fold((error)=>Left(error), (response)=>Right(response));
+    var either = await dataSource.getAllBrands();
+    return either.fold((error) => Left(error), (response) => Right(response));
   }
 }

@@ -1,8 +1,11 @@
 import 'package:ecommerce/core/routes_manager/routes.dart';
-import 'package:ecommerce/features/auth_presetation/login/login_view.dart';
-import 'package:ecommerce/features/auth_presetation/sign_up/sign_up.dart';
-import 'package:ecommerce/features/home_screen/home_screen_view.dart';
-import 'package:ecommerce/features/home_screen/shop_tap/product_details_view.dart';
+import 'package:ecommerce/presentation/auth_presetation/forget_password/forget_password_view.dart';
+import 'package:ecommerce/presentation/auth_presetation/forget_password/reset_password_view.dart';
+import 'package:ecommerce/presentation/auth_presetation/forget_password/verify_reset_code_view.dart';
+import 'package:ecommerce/presentation/auth_presetation/login/login_view.dart';
+import 'package:ecommerce/presentation/auth_presetation/sign_up/sign_up.dart';
+import 'package:ecommerce/presentation/home_screen/home_screen_view.dart';
+import 'package:ecommerce/presentation/home_screen/shop_tap/product_details_view.dart';
 import 'package:flutter/material.dart';
 
 class RouteGenerator {
@@ -14,6 +17,12 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => SignUp());
       case Routes.homeScreen:
         return MaterialPageRoute(builder: (_) => HomeScreenView());
+      case Routes.forgetPassword:
+        return MaterialPageRoute(builder: (_) => ForgetPasswordView());
+      case Routes.verifyResetPassword:
+        return MaterialPageRoute(builder: (_) => VerifyResetCodeView());
+      case Routes.resetPassword:
+        return MaterialPageRoute(builder: (_) => ResetPasswordView());
       default:
         return unDefinedRoute();
     }

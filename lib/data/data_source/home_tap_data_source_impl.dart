@@ -23,7 +23,7 @@ class HomeTapDataSourceImpl implements HomeTapDataSource {
         var response = await apiManager.getData(EndPoint.categoriesEndPoint);
         var categoryResponse = CategoryResponseDto.fromJson(response.data);
         if (response.statusCode! >= 200 && response.statusCode! < 300) {
-          return Right(categoryResponse );
+          return Right(categoryResponse);
         } else {
           return Left(ServerError(errorMessage: categoryResponse.message!));
         }
@@ -47,14 +47,14 @@ class HomeTapDataSourceImpl implements HomeTapDataSource {
         var response = await apiManager.getData(EndPoint.brandsEndPoint);
         var categoryResponse = BrandResponseDto.fromJson(response.data);
         if (response.statusCode! >= 200 && response.statusCode! < 300) {
-          return Right(categoryResponse );
+          return Right(categoryResponse);
         } else {
           return Left(ServerError(errorMessage: categoryResponse.message!));
         }
       } else {
         return Left(NetworkError(
             errorMessage:
-            "no internet connection , please check your network"));
+                "no internet connection , please check your network"));
       }
     } catch (e) {
       return Left(Failures(errorMessage: e.toString()));

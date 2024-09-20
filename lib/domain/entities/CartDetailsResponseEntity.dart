@@ -7,17 +7,16 @@ import 'package:ecommerce/domain/entities/ProductResponseEntity.dart';
 
 class CartDetailsResponseEntity {
   CartDetailsResponseEntity({
-      this.status, 
-      this.numOfCartItems, 
-      this.cartId, 
-      this.data,});
+    this.status,
+    this.numOfCartItems,
+    this.cartId,
+    this.data,
+  });
 
   String? status;
   num? numOfCartItems;
   String? cartId;
   CartDataEntity? data;
-
-
 }
 
 /// _id : "66dc86801a43872c9195bbe9"
@@ -30,13 +29,14 @@ class CartDetailsResponseEntity {
 
 class CartDataEntity {
   CartDataEntity({
-      this.id,
-      this.cartOwner,
-      this.products,
-      this.createdAt,
-      this.updatedAt,
-      this.v,
-      this.totalCartPrice,});
+    this.id,
+    this.cartOwner,
+    this.products,
+    this.createdAt,
+    this.updatedAt,
+    this.v,
+    this.totalCartPrice,
+  });
 
   String? id;
   String? cartOwner;
@@ -47,8 +47,6 @@ class CartDataEntity {
   num? totalCartPrice;
 
   toJson() {}
-
-
 }
 
 /// count : 2
@@ -58,10 +56,11 @@ class CartDataEntity {
 
 class CartProductsEntity {
   CartProductsEntity({
-      this.count,
-      this.id,
-      this.product,
-      this.price,});
+    this.count,
+    this.id,
+    this.product,
+    this.price,
+  });
 
   num? count;
   String? id;
@@ -69,8 +68,6 @@ class CartProductsEntity {
   num? price;
 
   toJson() {}
-
-
 }
 
 /// subcategory : [{"_id":"6407f1bcb575d3b90bf95797","name":"Women's Clothing","slug":"women's-clothing","category":"6439d58a0049ad0b52b9003f"}]
@@ -83,9 +80,7 @@ class CartProductsEntity {
 /// ratingsAverage : 4.8
 /// id : "6428eb43dc1175abc65ca0b3"
 
-
 /// _id : "64089bbe24b25627a253158b"
 /// name : "DeFacto"
 /// slug : "defacto"
 /// image : "https://ecommerce.routemisr.com/Route-Academy-brands/1678285758109.png"
-

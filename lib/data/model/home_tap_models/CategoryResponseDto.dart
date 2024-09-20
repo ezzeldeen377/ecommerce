@@ -6,15 +6,18 @@ import 'package:ecommerce/domain/entities/CategoryResponseEntity.dart';
 
 class CategoryResponseDto extends CategoryResponseEntity {
   CategoryResponseDto({
-      super.results,
-      super.message,
-      super.statusMsg,
-      super.metadata,
-      super.data,});
+    super.results,
+    super.message,
+    super.statusMsg,
+    super.metadata,
+    super.data,
+  });
 
   CategoryResponseDto.fromJson(dynamic json) {
     results = json['results'];
-    metadata = json['metadata'] != null ? MetadataDto.fromJson(json['metadata']) : null;
+    metadata = json['metadata'] != null
+        ? MetadataDto.fromJson(json['metadata'])
+        : null;
     if (json['data'] != null) {
       data = [];
       json['data'].forEach((v) {
@@ -22,9 +25,6 @@ class CategoryResponseDto extends CategoryResponseEntity {
       });
     }
   }
-
-
-
 }
 
 /// _id : "6439d61c0049ad0b52b90051"
@@ -34,14 +34,15 @@ class CategoryResponseDto extends CategoryResponseEntity {
 /// createdAt : "2023-04-14T22:39:24.365Z"
 /// updatedAt : "2023-04-14T22:39:24.365Z"
 
-class DataDto extends DataEntity{
+class DataDto extends DataEntity {
   DataDto({
-      super.id,
-      super.name,
-      super.slug,
-      super.image,
-      super.createdAt,
-      super.updatedAt,});
+    super.id,
+    super.name,
+    super.slug,
+    super.image,
+    super.createdAt,
+    super.updatedAt,
+  });
 
   DataDto.fromJson(dynamic json) {
     id = json['_id'];
@@ -51,27 +52,22 @@ class DataDto extends DataEntity{
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
   }
-
-
-
 }
 
 /// currentPage : 1
 /// numberOfPages : 1
 /// limit : 40
 
-class MetadataDto extends MetadataEntity{
+class MetadataDto extends MetadataEntity {
   MetadataDto({
-      super.currentPage,
-      super.numberOfPages,
-      super.limit,});
+    super.currentPage,
+    super.numberOfPages,
+    super.limit,
+  });
 
   MetadataDto.fromJson(dynamic json) {
     currentPage = json['currentPage'];
     numberOfPages = json['numberOfPages'];
     limit = json['limit'];
   }
-
-
-
 }

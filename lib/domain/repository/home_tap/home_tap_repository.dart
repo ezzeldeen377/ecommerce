@@ -6,5 +6,4 @@ import 'package:ecommerce/domain/failures.dart';
 abstract class HomeTapRepository {
   Future<Either<Failures, CategoryResponseEntity>> getAllCategory();
   Future<Either<Failures, BrandResponseEntity>> getAllBrands();
-
 }

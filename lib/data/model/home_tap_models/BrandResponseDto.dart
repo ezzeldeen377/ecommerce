@@ -8,15 +8,18 @@ import 'package:ecommerce/domain/entities/CategoryResponseEntity.dart';
 
 class BrandResponseDto extends BrandResponseEntity {
   BrandResponseDto({
-      super.results,
-      super.message,
-      super.statusMsg,
-      super.metadata,
-      super.data,});
+    super.results,
+    super.message,
+    super.statusMsg,
+    super.metadata,
+    super.data,
+  });
 
   BrandResponseDto.fromJson(dynamic json) {
     results = json['results'];
-    metadata = json['metadata'] != null ? MetadataDto.fromJson(json['metadata']) : null;
+    metadata = json['metadata'] != null
+        ? MetadataDto.fromJson(json['metadata'])
+        : null;
     if (json['data'] != null) {
       data = [];
       json['data'].forEach((v) {
@@ -24,9 +27,6 @@ class BrandResponseDto extends BrandResponseEntity {
       });
     }
   }
-
-
-
 }
 
 /// _id : "6439d61c0049ad0b52b90051"
@@ -35,4 +35,3 @@ class BrandResponseDto extends BrandResponseEntity {
 /// image : "https://ecommerce.routemisr.com/Route-Academy-categories/1681511964020.jpeg"
 /// createdAt : "2023-04-14T22:39:24.365Z"
 /// updatedAt : "2023-04-14T22:39:24.365Z"
-

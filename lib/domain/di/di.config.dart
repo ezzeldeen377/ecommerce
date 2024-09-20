@@ -22,19 +22,22 @@ import '../../data/repository/cart_details_repository_impl.dart' as _i165;
 import '../../data/repository/favourite_tab_repository_impl.dart' as _i469;
 import '../../data/repository/home_tap_repository_impl.dart' as _i12;
 import '../../data/repository/shop_tap_repository_impl.dart' as _i423;
-import '../../features/auth_presetation/login/cubit/login_view_model.dart'
-    as _i422;
-import '../../features/auth_presetation/sign_up/cubit/sign_up_view_model.dart'
-    as _i8;
-import '../../features/home_screen/cart_details/cubit/cart_details_view_model.dart'
-    as _i534;
-import '../../features/home_screen/cubit/home_screen_view_model.dart' as _i147;
-import '../../features/home_screen/favourite_tap/cubit/favourite_tab_view_model.dart'
-    as _i804;
-import '../../features/home_screen/home_tap/cubit/home_tap_view_model.dart'
-    as _i666;
-import '../../features/home_screen/shop_tap/cubit/shop_tap_view_model.dart'
-    as _i866;
+import '../../presentation/auth_presetation/forget_password/cubit/forget_password_view_model.dart'
+    as _i764;
+import '../../presentation/auth_presetation/login/cubit/login_view_model.dart'
+    as _i225;
+import '../../presentation/auth_presetation/sign_up/cubit/sign_up_view_model.dart'
+    as _i747;
+import '../../presentation/home_screen/cart_details/cubit/cart_details_view_model.dart'
+    as _i775;
+import '../../presentation/home_screen/cubit/home_screen_view_model.dart'
+    as _i20;
+import '../../presentation/home_screen/favourite_tap/cubit/favourite_tab_view_model.dart'
+    as _i663;
+import '../../presentation/home_screen/home_tap/cubit/home_tap_view_model.dart'
+    as _i6;
+import '../../presentation/home_screen/shop_tap/cubit/shop_tap_view_model.dart'
+    as _i974;
 import '../repository/auth_repository/sign_up/auth_Data_source.dart' as _i582;
 import '../repository/auth_repository/sign_up/auth_repository.dart' as _i150;
 import '../repository/cart_details/cart_details_data_source.dart' as _i809;
@@ -45,9 +48,13 @@ import '../repository/home_tap/home_tap_data_source.dart' as _i669;
 import '../repository/home_tap/home_tap_repository.dart' as _i984;
 import '../repository/shop_tap/shop_tap_data_source.dart' as _i796;
 import '../repository/shop_tap/shop_tap_repository.dart' as _i814;
+import '../usecase/auth_usecase/forget_password_use_case.dart' as _i645;
 import '../usecase/auth_usecase/login_use_case.dart' as _i190;
+import '../usecase/auth_usecase/reset_password_use_case.dart' as _i627;
 import '../usecase/auth_usecase/sign_up_usecase.dart' as _i364;
+import '../usecase/auth_usecase/verify_code_use_case.dart' as _i500;
 import '../usecase/favourite_tap/add_item_to_watch_list_use_case.dart' as _i834;
+import '../usecase/favourite_tap/get_all_wish_list_use_case.dart' as _i700;
 import '../usecase/home_tap/brands_use_case.dart' as _i1070;
 import '../usecase/home_tap/cateogory_use_case.dart' as _i975;
 import '../usecase/shop_tap/add_to_cart_use_case.dart' as _i219;
@@ -67,7 +74,7 @@ extension GetItInjectableX on _i174.GetIt {
       environment,
       environmentFilter,
     );
-    gh.factory<_i147.HomeScreenViewModel>(() => _i147.HomeScreenViewModel());
+    gh.factory<_i20.HomeScreenViewModel>(() => _i20.HomeScreenViewModel());
     gh.singleton<_i236.ApiManager>(() => _i236.ApiManager());
     gh.factory<_i669.HomeTapDataSource>(
         () => _i318.HomeTapDataSourceImpl(apiManager: gh<_i236.ApiManager>()));
@@ -90,33 +97,45 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i190.LoginUseCase(repository: gh<_i150.AuthRepository>()));
     gh.factory<_i364.SignUpUseCase>(
         () => _i364.SignUpUseCase(repository: gh<_i150.AuthRepository>()));
+    gh.factory<_i645.ForgetPasswordUseCase>(() =>
+        _i645.ForgetPasswordUseCase(repository: gh<_i150.AuthRepository>()));
+    gh.factory<_i500.VerifyCodeUseCase>(
+        () => _i500.VerifyCodeUseCase(repository: gh<_i150.AuthRepository>()));
+    gh.factory<_i627.ResetPasswordUseCase>(() =>
+        _i627.ResetPasswordUseCase(repository: gh<_i150.AuthRepository>()));
     gh.factory<_i984.HomeTapRepository>(() =>
         _i12.HomeTapRepositoryImpl(dataSource: gh<_i669.HomeTapDataSource>()));
     gh.factory<_i513.CartDetailsRepository>(() =>
         _i165.CartDetailsRepositoryImpl(
             dataSource: gh<_i809.CartDetailsDataSource>()));
+    gh.factory<_i764.ForgetPasswordViewModel>(
+        () => _i764.ForgetPasswordViewModel(
+              forgetPasswordUseCase: gh<_i645.ForgetPasswordUseCase>(),
+              verifyCodeUseCase: gh<_i500.VerifyCodeUseCase>(),
+              resetPasswordUseCase: gh<_i627.ResetPasswordUseCase>(),
+            ));
     gh.factory<_i834.AddItemToWatchListUseCase>(() =>
         _i834.AddItemToWatchListUseCase(
             repository: gh<_i415.FavouriteTabRepository>()));
+    gh.factory<_i700.GetAllWishListUseCase>(() => _i700.GetAllWishListUseCase(
+        repository: gh<_i415.FavouriteTabRepository>()));
     gh.factory<_i219.AddToCartUseCase>(() =>
         _i219.AddToCartUseCase(repository: gh<_i814.ShopTapRepository>()));
     gh.factory<_i969.ProductUseCase>(
         () => _i969.ProductUseCase(repository: gh<_i814.ShopTapRepository>()));
-    gh.factory<_i804.FavouriteTabViewModel>(() => _i804.FavouriteTabViewModel(
-        addItemToWatchListUseCase: gh<_i834.AddItemToWatchListUseCase>()));
     gh.factory<_i1070.BrandUseCase>(
         () => _i1070.BrandUseCase(repository: gh<_i984.HomeTapRepository>()));
     gh.factory<_i975.CateogoryUseCase>(() =>
         _i975.CateogoryUseCase(repository: gh<_i984.HomeTapRepository>()));
-    gh.factory<_i422.LoginViewModel>(
-        () => _i422.LoginViewModel(useCase: gh<_i190.LoginUseCase>()));
-    gh.factory<_i8.SignUpViewModel>(
-        () => _i8.SignUpViewModel(useCase: gh<_i364.SignUpUseCase>()));
-    gh.factory<_i866.ShopTabViewModel>(() => _i866.ShopTabViewModel(
+    gh.factory<_i225.LoginViewModel>(
+        () => _i225.LoginViewModel(useCase: gh<_i190.LoginUseCase>()));
+    gh.factory<_i747.SignUpViewModel>(
+        () => _i747.SignUpViewModel(useCase: gh<_i364.SignUpUseCase>()));
+    gh.factory<_i974.ShopTabViewModel>(() => _i974.ShopTabViewModel(
           productUseCase: gh<_i969.ProductUseCase>(),
           addToCartUseCase: gh<_i219.AddToCartUseCase>(),
         ));
-    gh.factory<_i666.HomeTapViewModel>(() => _i666.HomeTapViewModel(
+    gh.factory<_i6.HomeTapViewModel>(() => _i6.HomeTapViewModel(
           cateogoryUseCase: gh<_i975.CateogoryUseCase>(),
           brandUseCase: gh<_i1070.BrandUseCase>(),
         ));
@@ -127,7 +146,11 @@ extension GetItInjectableX on _i174.GetIt {
             repository: gh<_i513.CartDetailsRepository>()));
     gh.factory<_i523.UpdateQuantityUseCase>(() => _i523.UpdateQuantityUseCase(
         repository: gh<_i513.CartDetailsRepository>()));
-    gh.factory<_i534.CartDetailsViewModel>(() => _i534.CartDetailsViewModel(
+    gh.factory<_i663.FavouriteTabViewModel>(() => _i663.FavouriteTabViewModel(
+          addItemToWatchListUseCase: gh<_i834.AddItemToWatchListUseCase>(),
+          getAllWishListUseCase: gh<_i700.GetAllWishListUseCase>(),
+        ));
+    gh.factory<_i775.CartDetailsViewModel>(() => _i775.CartDetailsViewModel(
           cartDetailsUseCase: gh<_i830.GetCartDetailsUseCase>(),
           deleteItemFromCartUseCase: gh<_i317.DeleteItemFromCartUseCase>(),
           updateQuantityUseCase: gh<_i523.UpdateQuantityUseCase>(),

@@ -4,4 +4,7 @@ class Routes {
   static const String homeScreen = "/homeScreen";
   static const String productDetails = "/productDetails";
   static const String cart = "/cart";
+  static const String forgetPassword = "/forgetPassword";
+  static const String verifyResetPassword = "/verifyResetPassword";
+  static const String resetPassword = "/resetPassword";
 }
